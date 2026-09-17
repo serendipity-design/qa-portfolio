@@ -1,0 +1,90 @@
+# 接口自动化用例数据（Day 6 会用到）
+#
+# 为什么用例数据要抽到这里？
+# —— 数据和代码分离。加一条用例不需要改任何 Python 代码，产品/测试同学也能维护。
+# 这是数据驱动测试（DDT），面试高频考点。
+#
+# 目标站点：https://jsonplaceholder.typicode.com （免费假 REST API，随便玩）
+
+- name: 获取全部帖子列表
+  method: GET
+  path: /posts
+  expected_status: 200
+  assertions:
+    - type: length_gt
+      value: 10
+
+- name: 获取单个帖子
+  method: GET
+  path: /posts/1
+  expected_status: 200
+  assertions:
+    - type: field_equals
+      field: id
+      value: 1
+
+- name: 获取不存在的帖子（异常场景）
+  method: GET
+  path: /posts/999999
+  expected_status: 404
+
+- name: 创建帖子（POST）
+  method: POST
+  path: /posts
+  body:
+    title: "foo"
+    body: "bar"
+    userId: 1
+  expected_status: 201
+  assertions:
+    - type: field_equals
+      field: title
+      value: "foo"
+
+- name: 更新帖子（PUT）
+  method: PUT
+  path: /posts/1
+  body:
+    id: 1
+    title: "updated title"
+    body: "updated body"
+    userId: 1
+  expected_status: 200
+
+- name: 删除帖子（DELETE）
+  method: DELETE
+  path: /posts/1
+  expected_status: 200
+
+- name: 查询用户的帖子（带 query 参数）
+  method: GET
+  path: /posts
+  params:
+    userId: 1
+  expected_status: 200
+  assertions:
+    - type: length_gt
+      value: 0
+
+- name: 获取评论列表
+  method: GET
+  path: /comments
+  expected_status: 200
+
+- name: 获取用户列表
+  method: GET
+  path: /users
+  expected_status: 200
+  assertions:
+    - type: length_gt
+      value: 5
+
+- name: 获取用户的相册（嵌套资源）
+  method: GET
+  path: /users/1/albums
+  expected_status: 200
+
+# ---------------------------------------------------------------
+# Day 6 作业：照着上面的格式再补 5 条用例
+# 提示：可以试 /todos、/photos、/posts/1/comments 这些路径
+# ---------------------------------------------------------------

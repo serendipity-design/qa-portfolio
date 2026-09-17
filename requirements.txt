@@ -1,0 +1,28 @@
+# 依赖清单（已在本机 Python 3.13 + pytest 9.1 环境验证可跑通 Day 1）
+# 用 >= 而不是 == ，避免版本不存在导致安装失败
+
+# Day 1 起
+pytest>=8.3
+requests>=2.32
+
+# Day 3 起（数据驱动读 yaml）
+PyYAML>=6.0
+
+# Day 6 起（失败重试）
+pytest-rerunfailures>=15.0
+
+# Day 8 起（Web 自动化）
+playwright>=1.49
+pytest-playwright>=0.7
+
+# Day 16 起（结构校验）
+jsonschema>=4.23
+
+# Day 18 起（性能测试）
+locust>=2.32
+
+# Day 20 起（HTML 报告）
+pytest-html>=4.1
+
+# Day 22 起（AI 评测 + 大模型）
+# pip install deepeval ragas langchain langchain-openai chromadb
