@@ -36,3 +36,10 @@ def api_timeout():
 #         "Content-Type": "application/json",
 #     }
 # ---------------------------------------------------------------
+@pytest.fixture(scope="session")
+def default_headers():
+    """统一的请求头"""
+    return {
+        "User-Agent": "qa-portfolio/1.0",
+        "Content-Type": "application/json",
+    }
