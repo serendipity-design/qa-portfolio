@@ -1,0 +1,24 @@
+# Python 虚拟环境（几千个文件，绝对不能进仓库）
+venv/
+.venv/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# pytest 缓存与报告
+.pytest_cache/
+report.html
+assets/
+
+# Excel / WPS 打开时生成的临时锁文件（~$ 开头）
+~$*
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
