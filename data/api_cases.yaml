@@ -88,3 +88,27 @@
 # Day 6 作业：照着上面的格式再补 5 条用例
 # 提示：可以试 /todos、/photos、/posts/1/comments 这些路径
 # ---------------------------------------------------------------
+- name: 获取待办事项列表
+  method: GET
+  path: /todos
+  expected_status: 200
+
+- name: 获取单个待办事项
+  method: GET
+  path: /todos/1
+  expected_status: 200
+
+- name: 获取照片
+  method: GET
+  path: /photos
+  expected_status: 200
+
+- name: 获取单个照片
+  method: GET
+  path: /photos/1
+  expected_status: 200
+
+- name: 获取帖子1的评论
+  method: GET
+  path: /posts/1/comments
+  expected_status: 200
