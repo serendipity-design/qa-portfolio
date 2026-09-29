@@ -12,6 +12,9 @@ __pycache__/
 report.html
 assets/
 
+# 失败自动截图（每次跑都会变，不入库）
+screenshots/
+
 # Excel / WPS 打开时生成的临时锁文件（~$ 开头）
 ~$*
 
