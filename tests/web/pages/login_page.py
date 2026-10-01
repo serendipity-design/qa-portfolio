@@ -1,5 +1,5 @@
 #把 saucedemo 拆成两个页面类
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 class LoginPage:
     def __init__(self, page: Page):
         self.page = page
@@ -15,3 +15,6 @@ class LoginPage:
         self.username.fill(user)
         self.password.fill(pwd)
         self.login_btn.click()
+
+    def assert_error(self,message):
+        expect(self.page.locator('[data-test="error"]')).to_have_text(message)
