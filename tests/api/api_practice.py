@@ -1,7 +1,7 @@
 """Day 3 作业⑥：用封装好的 HttpClient 重写 5 个接口请求
 
-第 1 条已写好（直接能跑），剩下 4 条是 TODO，照着抄改。
-每写完一条就跑一次：pytest tests/api/test_api_practice.py -v
+第 1 条已写好（直接能跑），剩下 4 条是 TODO,照着抄改。
+每写完一条就跑一次:pytest tests/api/test_api_practice.py -v
 """
 
 from utils.http_client import HttpClient
@@ -19,7 +19,7 @@ def test_get_single_post(base_url):
 
 
 # ---------- TODO 1：GET 全部帖子 ----------
-# 抄示例改 3 处：路径改成 /posts、状态码断言 200、加一条"列表长度大于 0"
+# 路径改成 /posts、状态码断言 200、加一条"列表长度大于 0"
 # 提示：r.json() 这次返回的是列表，len(r.json()) 是数量
 
 def test_get_all_posts(base_url):

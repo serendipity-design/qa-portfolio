@@ -9,13 +9,14 @@ class ProductPage:
         self.cart_link = page.locator('[data-test="shopping-cart-link"]')
         self.inventory_item_name = page.locator('[data-test="inventory-item-name"]')
 
-        # 两个商品的加入购物车按钮
+        
         self.add_backpack = page.locator('[data-test="add-to-cart-sauce-labs-backpack"]')
         self.add_bike_light = page.locator('[data-test="add-to-cart-sauce-labs-bike-light"]')
         self.first_price = page.locator('[data-test="inventory-item-price"]').first
         self.remove_buttons = page.locator('button[data-test^="remove-"]')
         self.add_to_cart_buttons = page.locator('button[data-test^="add-to-cart-"]')
         self.sort_dropdown = page.locator('[data-test="product-sort-container"]')
+        self.add_fleece_jacket = page.locator('[data-test="add-to-cart-sauce-labs-fleece-jacket"]')
 
     def get_title(self):
         return self.title
@@ -35,6 +36,10 @@ class ProductPage:
     def add_bike_light_to_cart(self):
         # 添加自行车灯
         self.add_bike_light.click()
+
+    def add_fleece_jacket_to_cart(self):
+        # 添加抓绒夹克
+        self.add_fleece_jacket.click()
 
     def assert_cart_badge(self, num: str):
         # 断言购物车角标数字
@@ -62,5 +67,6 @@ class ProductPage:
         self.remove_buttons.first.click()
 
     def logout(self):
+        # 登出
         self.page.locator("#react-burger-menu-btn").click()
         self.page.locator('[data-test="logout-sidebar-link"]').click()

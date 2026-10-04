@@ -2,8 +2,7 @@
 
 为什么放这里而不是项目根目录？
 conftest.py 的作用范围是「它所在的目录 + 所有子目录」。
-放在 tests/web/ 下，接口测试（tests/api/）就不会被这些配置影响。
-这是 pytest 的分层配置机制，面试聊框架结构时可以直接讲。
+放在 tests/web/ 下,接口测试(tests/api/）就不会被这些配置影响。
 """
 
 import os
