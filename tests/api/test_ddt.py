@@ -7,3 +7,4 @@ def test_from_yaml(case,http_client):
                         json=case.get("body"), params=case.get("params"))
 
     assert r.status_code == case["expected_status"]
+    assert r.elapsed.total_seconds() < 2

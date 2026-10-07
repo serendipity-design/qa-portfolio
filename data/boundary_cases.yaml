@@ -1,0 +1,97 @@
+# 边界用例数据（针对本地 mock 服务 mock_server/app.py）
+#
+# 与 api_cases.yaml 分开维护的原因：被测对象不同。
+#   api_cases.yaml     → https://jsonplaceholder.typicode.com（外部假数据站）
+#   boundary_cases.yaml → http://127.0.0.1:5000（自己实现的带校验的服务）
+#
+# 字段格式与 api_cases.yaml 保持一致（name / method / path / body / expected_status），
+# 这样测试代码的读法不变，只是多断一个 expected_msg。
+
+- name: B01 id为空字符串
+  method: POST
+  path: /users
+  body:
+    id: ""
+    name: "test01"
+  expected_status: 400
+  expected_msg: "id不能为空"
+
+- name: B02 id为负数
+  method: POST
+  path: /users
+  body:
+    id: -1
+    name: "test02"
+  expected_status: 400
+  expected_msg: "id不能为负数"
+
+- name: B03 id完全不传
+  method: POST
+  path: /users
+  body:
+    name: "test03"
+  expected_status: 400
+  expected_msg: "id为必传参数"
+
+- name: B04 id为非数字字符串
+  method: POST
+  path: /users
+  body:
+    id: "abc123xyz"
+    name: "test04"
+  expected_status: 400
+  expected_msg: "id必须为数字"
+
+- name: B05 id为小数
+  method: POST
+  path: /users
+  body:
+    id: 1.5
+    name: "test05"
+  expected_status: 400
+  expected_msg: "id必须为整数"
+
+- name: B06 id为0
+  method: POST
+  path: /users
+  body:
+    id: 0
+    name: "test06"
+  expected_status: 400
+  expected_msg: "id不能为0"
+
+- name: B07 id为最大整数(边界内)
+  method: POST
+  path: /users
+  body:
+    id: 2147483647
+    name: "test07"
+  expected_status: 200
+  expected_msg: "请求成功"
+
+- name: B08 id含特殊字符
+  method: POST
+  path: /users
+  body:
+    id: "@#$%^&*()"
+    name: "test08"
+  expected_status: 400
+  expected_msg: "id含有非法字符"
+
+- name: B09 id为超大整数
+  method: POST
+  path: /users
+  body:
+    id: 9223372036854775807
+    name: "test09"
+  expected_status: 400
+  expected_msg: "id超出范围"
+
+- name: B10 name为超长字符串
+  method: POST
+  path: /users
+  body:
+    id: 10001
+    name: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  expected_status: 400
+  expected_msg: "name超出长度限制"
