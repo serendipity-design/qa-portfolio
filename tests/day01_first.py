@@ -1,18 +1,3 @@
-"""
-Day 1 —— 你的第一行测试代码。
-
-这是整个项目的起点。目标只有一个：让你在今晚看到终端里出现绿色的 "passed"。
-
-运行方式（在 qa-portfolio 目录下，虚拟环境已激活时）：
-
-    pytest tests/test_day01_first.py -v
-
-看到 8 passed 就算 Day 1 完成。
-
-为什么是 8 条：4 个独立的 test_ 函数，其中 test_add_multiple_cases 因为
-带了 4 组 parametrize 数据会自动展开成 4 条 —— 这就是参数化的威力。
-"""
-
 import pytest
 
 
