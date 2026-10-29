@@ -1,7 +1,5 @@
-# CI 配置（Day 20 会用到）
-#
-# 作用：每次 git push 之后，GitHub 自动虚拟机跑一遍你的全部用例。
-# 面试时说「我的自动化测试接了 CI」，含金量比单纯说「我会 Playwright」高一个档次。
+# CI 配置
+# 作用：每次 git push 之后，GitHub 自动虚拟机跑一遍你的全部用例。。
 
 name: QA Automation CI
 
